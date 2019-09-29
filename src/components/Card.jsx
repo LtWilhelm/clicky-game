@@ -15,10 +15,28 @@ class Card extends Component {
         }
     }
 
+    // compon () {
+    //     if (this.props.score % 12 === 0 || !this.props.score) this.setState({clicked: false});
+    // }
+    
+    componentDidUpdate () {
+        if ((this.props.score % 12 === 0 || !this.props.score) && this.state.clicked) this.setState({clicked: false});
+    }
+
     render () {
         return (
-            <div className="hoverable col s3">
-                <img src={this.props.image} alt="card" max-width="200px" height="200px" />
+            <div className="col m3 s4 imgCard"
+                style={{
+                    display: 'flex',
+                    marginTop: '1em',
+                    marginBottom: '1em'
+                }}
+            >
+                <img onClick={this.handleClick} className="white hoverable z-depth-2" src={this.props.image} alt="card" max-width="200px" height="200px"
+                    style={{
+                        margin: 'auto'
+                    }}
+                />
             </div>
         )
     }
